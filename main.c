@@ -18,9 +18,6 @@ int main(int argc, char **argv)
 
 	errno = 0;
 	(void)argc;
-	(void)i;
-	(void)token;
-	(void)ntokens;
 	while (1)
 	{
 		count++;
@@ -31,6 +28,7 @@ int main(int argc, char **argv)
 		}
 
 		chars_r = getline(&buffer, &nbuffer, stdin);
+		/*chars_r = _getline(&buffer, &nbuffer, stdin); */
 		if (chars_r == -1)
 		{
 			free(buffer);
@@ -42,7 +40,7 @@ int main(int argc, char **argv)
 		memfch(buffer_copy);
 		_strcpy(buffer_copy, buffer);
 		ntokens = calc_tokens(buffer, delim) + 1;
-		/* argt = (char **)malloc(sizeof(char *) * ntokens);
+		argt = (char **)malloc(sizeof(char *) * ntokens);
 		token = strtok(buffer_copy, delim);
 		for (i = 0; token != NULL; i++)
 		{
@@ -51,8 +49,7 @@ int main(int argc, char **argv)
 			token = strtok(NULL, delim);
 		}
 		argt[i] = NULL;
-		*/
-		argt = buffCopy_token(buffer_copy);
+		/* argt = buffCopy_token(buffer_copy); */
 		if (argt[0] == NULL)
 		{
 			free(argt);
@@ -68,7 +65,7 @@ int main(int argc, char **argv)
 		}
 		exe_cmd(argt, argv);
 		free_2d_array(ntokens, argt);
-		/*free(buffer_copy);*/
+		free(buffer_copy);
 		free(buffer);
 		buffer_copy =  NULL;
 		buffer = NULL;
