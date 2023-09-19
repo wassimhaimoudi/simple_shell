@@ -8,7 +8,7 @@
  *
  * Return: buffer after it's being allocated, NULL on failure
  */
-void *_realloc(void *old_buffer, size_t old_size, size_t new_size)
+char *_realloc(void *old_buffer, size_t old_size, size_t new_size)
 {
 	char *buffer = NULL;
 	char *char_buffer = NULL;

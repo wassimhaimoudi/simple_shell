@@ -9,11 +9,12 @@
  * Return: 0 on success, -1 on failure.
  */
 
-int _setenv(const char *name, const char *value, int overwrite)
+int _setenv(char *name, char *value, int overwrite)
 {
 	int i, len;
 	char *newVariable = NULL, *temp = NULL;
 
+	len = _strlen(name) + _strlen(value) + 2;
 	if (!name || !value)
 		return (-1);
 
@@ -23,7 +24,6 @@ int _setenv(const char *name, const char *value, int overwrite)
 		{
 			if (overwrite)
 			{
-				len = _strlen(name) + _strlen(value) + 2;
 				newVariable = (char *)malloc(sizeof(char) * len);
 				strcpy(newVariable, name);
 				strcat(newVariable, "=");
@@ -51,7 +51,7 @@ int _setenv(const char *name, const char *value, int overwrite)
  *
  * Return: 0 on success, -1 on failure.
  */
-int _unsetenv(const char *name)
+int _unsetenv(char *name)
 {
 	int i, envCount;
 

@@ -33,7 +33,7 @@ int exe_cmd(char **argt, char **argv);
 int exe_cmd_full(char **argt, char **argv, char *full_cmd);
 char *get_full_path(char *paths, char *cmd);
 ssize_t _getline(char **, size_t *, FILE *);
-void *_realloc(void *old_buffer, size_t old_size, size_t new_size);
+char *_realloc(void *old_buffer, size_t old_size, size_t new_size);
 char *_getenv(char *name);
 char **buffCopy_token(char *buffer_copy);
 int calc_tokens(char *str, char *delim);
